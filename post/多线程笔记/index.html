@@ -66,9 +66,172 @@
                             2021年5月14日
                             15:47
                         </date>
-                        <div class="post-content">
-                            <p>底层实现：</p>
-<p><img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210514154945804.png" alt="image-20210514154945804"></p>
+                        <aside id="toc" class="dismissed">
+                            <span class="toc-title">目录 <a href="#" class="toc-dismiss"></a></span>
+                            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#进程">进程</a></li>
+    <li><a href="#并发和并行">并发和并行</a></li>
+    <li><a href="#线程">线程</a></li>
+    <li><a href="#方法">方法</a></li>
+    <li><a href="#继承thread--vs--实现runnable的区别">继承Thread  vs  实现Runnable的区别</a></li>
+    <li><a href="#线程的生命周期">线程的生命周期</a></li>
+    <li><a href="#synchronized---星q烂z">Synchronized   星Q烂z</a></li>
+    <li><a href="#互斥锁">互斥锁</a></li>
+    <li><a href="#线程的死锁">线程的死锁</a></li>
+    <li><a href="#释放锁">释放锁</a></li>
+  </ul>
+</nav>
+                        </aside><div class="post-content">
+                            <h2 id="进程">进程</h2>
+<p>进程就是一个应用程序 就好像QQ微信
+一个进程可以有多个线程
+就好像QQ 你可以和我聊天，还可以和别人聊天   迅雷多个同时下载 就是多线程</p>
+<p>主线程结束不会造成程序结束，子线程不会结束</p>
+<h2 id="并发和并行">并发和并行</h2>
+<p>并发就是同一时刻多个任务交替执行，单核的电脑
+并行就是同一时刻多个任务同时执行 多核cpu可以实现并行</p>
+<h2 id="线程">线程</h2>
+<p>什么是线程？ 是由进程创建的 是进程的一个实体 线程也可以创建线程</p>
+<ol>
+<li>继承一个Thread类创建线程</li>
+<li>实现一个Runnable接口 都是重写他的run方法</li>
+<li>.start() 启动线程 最终会执行cat的run方法
+.run() 就是一个普通的方法，没有真正的启动一个线程 会把run()方法执行完往下执行</li>
+<li>真正实现多线程的效果 是start0() 而不是run
+start0()是本地方法，是jvm调用的，低层是c/c++实现
+Runnable : 创建Thread对象，把实现Runnable对象放入Thread 然后  .start() 低层使用了设计模式（代理模式）</li>
+</ol>
+<h2 id="方法">方法</h2>
+<p>yield() 礼让，不一定成功
+join() 线程插队 插队的程序一但插入成功 则肯定先执行完插队的线程的所有任务</p>
+<p>Thread.currentThread().getName()过得当然线程名字</p>
+<p>讲子线程设置为守护线程 .setDaemon(true)</p>
+<p>底层实现：</p>
+<p><img src="D:%5CS3%5Cspring-ssm%5CGit%5Cmy_boke%5CmyBlog%5Ccontent%5Cpost%5C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0.assets%5Cimage-20210514154945804.png" alt="image-20210514154945804"></p>
+<h2 id="继承thread--vs--实现runnable的区别">继承Thread  vs  实现Runnable的区别</h2>
+<ol>
+<li>
+<p>从Java的设计来看，通过继承Thread或者实现Runnable接口来创建线程本质上没用区别，</p>
+<p>从jdk帮助文档我们可以看到Thread类本身就实现了Runnable接口</p>
+</li>
+<li>
+<p>实现Runnable接口方式更加适合多个线程共享一个资源的情况，并且避免了单继承的限制，</p>
+<p>&mdash;建议使用Runnable</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">T3 t3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> T3<span style="color:#f92672">()</span>
+Thread thread01 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>t3<span style="color:#f92672">)</span>
+Thread thread02 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>t3<span style="color:#f92672">)</span>   
+thread01<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>    
+thread01<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>     <span style="color:#75715e">//可以共享一个线程资源
+</span><span style="color:#75715e">//因为 如果是继承Thread类   就是两个线程了 
+</span><span style="color:#75715e"></span>T3 t31 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> T3<span style="color:#f92672">()</span>
+T3 t32 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> T3<span style="color:#f92672">()</span>
+t31<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+t32<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</code></pre></div></li>
+</ol>
+<h2 id="线程的生命周期">线程的生命周期</h2>
+<p>新建 就绪 运行 阻塞 等待 超时等待 销毁</p>
+<p><img src="D:%5CS3%5Cspring-ssm%5CGit%5Cmy_boke%5CmyBlog%5Ccontent%5Cpost%5C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0.assets%5Cimage-20210514211921475.png" alt="image-20210514211921475"></p>
+<h2 id="synchronized---星q烂z">Synchronized   星Q烂z</h2>
+<p>线程同步机制</p>
+<ul>
+<li>
+<p>在多线程编程，一些敏感数据不允许被多个线程同时访问，此时就使用同步访问技术,保证数据在任何同一时刻最多有一个线程访问，以保证数据的完整性。</p>
+</li>
+<li>
+<p>也可以这样理解：线程同步，即当有一个线程对内存进行操作时，其他线程都不可以对这个内存地址进行操作</p>
+<p>直到该线程操作完成，其他线程才能对该内存地址进行操作</p>
+</li>
+</ul>
+<h2 id="互斥锁">互斥锁</h2>
+<p>基本介绍</p>
+<ol>
+<li>
+<p>Java语言中，引入了对象互斥锁的概率，来保证共享数据操作的完整性</p>
+</li>
+<li>
+<p>每个对象都对应于一个可称为<code>互斥锁</code>的标记，这个标记用来保证在任意时刻，只能有一个线程访问该对象</p>
+</li>
+<li>
+<p>关键字synchronized来与对象的互斥锁联系。</p>
+</li>
+<li>
+<p>**同步的局限性：**导致程序的执行效率要降低</p>
+</li>
+<li>
+<p>同步方法（非静态的）的锁可以是this，也可以是其他对象（要求是同一个对象）</p>
+<p>实际上加在当前对象的</p>
+</li>
+<li>
+<p>同步方法（静态的）的锁为当前类本身</p>
+<p>实际上加在当前类的</p>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ticket</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SellTest1</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
+    <span style="color:#75715e">//同步方法（静态的）的锁为当前类的本身
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//1. public synchronized static void m1(){}锁是加在类 SellTest1.class
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//2. 如果在静态方法中，实现一个同步代码块如下
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">m1</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;同步方法 -&gt; 只能有一个线程来进行操作 其他排队&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">m2</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">synchronized</span> <span style="color:#f92672">(</span>SellTest1<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;同步代码块  -&gt; 只能有一个线程来进行操作 其他排队&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#75715e">//-------------------------------------------------------------------------
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//1. public synchronized void m3(){} 同步方法
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//2. 这个锁在this对象
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">m3</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;同步方法 -&gt; 只能有一个线程来进行操作 其他排队&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">//3. 也可以在代码块上写 synchronized 同步代码块，互斥锁还是this对象
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">m4</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">synchronized</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;同步代码块 -&gt; 只能有一个线程来进行操作 其他排队&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>注意事项和细节</p>
+<ol>
+<li>同步方法如果没有使用static修饰：默认锁对象为this</li>
+<li>如果方法使用static修饰，默认锁对象：当前类.class</li>
+<li>现实的落地步骤：
+<ol>
+<li>需要先分析上锁的代码</li>
+<li>先择<strong>同步代码块</strong>和同步方法      &ndash;尽量使用同步代码块  因为加了线程同步后 会影响效率</li>
+<li>要求多个线程锁对象为同一个即可！</li>
+</ol>
+</li>
+</ol>
+<h2 id="线程的死锁">线程的死锁</h2>
+<p>多个线程都占用了对方的锁资源，但不肯相让，导致了死锁</p>
+<p>案例：</p>
+<p>​		两个资源Q 和 Z</p>
+<p>​		A线程占用了Q资源并且需要Z的对象锁才能释放</p>
+<p>​		B线程占用了Z资源并且需要Q的对象锁才能释放   &ndash;导致死锁  可以这样理解</p>
+<h2 id="释放锁">释放锁</h2>
+<p>下面操作会释放锁</p>
+<ol>
+<li>当前线程的同步方法 ，同步代码块执行结束</li>
+<li>遇到break return</li>
+<li>碰到异常Error或Exception</li>
+<li>执行线程对象的wait()方法，当前线程暂停</li>
+</ol>
+<p>下面操作不会释放锁</p>
+<ol>
+<li>线程执行同步方法或同步代码块时，程序调用Thread.sleep(),Thread.yield()</li>
+<li></li>
+</ol>
+<blockquote>
+<p>版权声明：本文为韩顺平视频，笔记自己敲的</p>
+<p>[本视频链接：https://www.bilibili.com/video/BV1zB4y1A7rb]</p>
+</blockquote>
 
                         </div>
 
