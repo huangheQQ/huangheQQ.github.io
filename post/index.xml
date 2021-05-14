@@ -2,30 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on huanghe</title>
-    <link>https://huangheQQ.github.io/post/</link>
+    <link>https://huangheqq.github.io/post/</link>
     <description>Recent content in Posts on huanghe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-<<<<<<< HEAD
-    <lastBuildDate>Fri, 14 May 2021 10:07:09 +0800</lastBuildDate><atom:link href="https://huangheQQ.github.io/post/index.xml" rel="self" type="application/rss+xml" />
-=======
-    <lastBuildDate>Fri, 14 May 2021 15:47:44 +0800</lastBuildDate><atom:link href="https://huangheQQ.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 May 2021 15:47:44 +0800</lastBuildDate><atom:link href="https://huangheqq.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>多线程笔记</title>
-      <link>https://huangheQQ.github.io/post/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/</link>
+      <link>https://huangheqq.github.io/post/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Fri, 14 May 2021 15:47:44 +0800</pubDate>
       
-      <guid>https://huangheQQ.github.io/post/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://huangheqq.github.io/post/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/</guid>
       <description>底层实现：</description>
     </item>
     
->>>>>>> 676a0f0 (2)
     <item>
       <title>Blog</title>
-      <link>https://huangheQQ.github.io/post/blog/</link>
+      <link>https://huangheqq.github.io/post/blog/</link>
       <pubDate>Fri, 14 May 2021 10:07:09 +0800</pubDate>
       
-      <guid>https://huangheQQ.github.io/post/blog/</guid>
+      <guid>https://huangheqq.github.io/post/blog/</guid>
       <description>Get的使用  Linux常用命令
  pwd : 查看当前所有目录 cd~:切换到用户所在目录 cd/：切换到根本目录 cd dir_name/:进入dir_name目录 ls:列出清单 ls -a:列出全部清单 clear:清空屏幕 mkdir:创建目录 rm -r dir_name：删除空目录 touch file_name:创建文件 echo file_content &amp;gt; file_name :给file_name文件写入内容file_content history:查看历史操作记录 --help：查看命令帮助文档 Git环境搭建  设置用户名与邮箱（用户标识，必要的)
  #查看系统config git config --system -l #查看当前用户(global)配置 git config --global -l #安装后自己需要配置的 不然以后提交项目提交不上去 git config --global user.name &amp;#34;huanghe&amp;#34; #名称 git config --global user.email &amp;#34;2816131206@qq.com&amp;#34; #邮箱 Git项目搭建 创建本地创库的方法有两种：一种是搭建全新的仓库，另一种是克隆远程仓库
@@ -37,12 +33,15 @@
     
     <item>
       <title>介绍</title>
-      <link>https://huangheQQ.github.io/post/myziji/</link>
+      <link>https://huangheqq.github.io/post/myziji/</link>
       <pubDate>Fri, 14 May 2021 10:07:09 +0800</pubDate>
       
-      <guid>https://huangheQQ.github.io/post/myziji/</guid>
+      <guid>https://huangheqq.github.io/post/myziji/</guid>
       <description>自我介绍 我是黄河
-QQ:2816131206@qq.com</description>
+QQ:2816131206@qq.com
+上传步骤
+绑定
+ hugo &amp;ndash;theme=maupassant &amp;ndash;baseUrl=&amp;ldquo;https://huangheQQ.github.io&amp;rdquo; &amp;ndash;buildDrafts cd public git init git add . git commit -m &amp;ldquo;第二次&amp;rdquo; git remote add origin https://github.com/huangheQQ/huangheQQ.github.io.git git push -u origin master 这个成功了：git push -u origin master -f  </description>
     </item>
     
   </channel>

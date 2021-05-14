@@ -2,33 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-<<<<<<< HEAD
-    <loc>https://huangheQQ.github.io/post/blog/</loc>
-    <lastmod>2021-05-14T10:07:09+08:00</lastmod>
-  </url><url>
-    <loc>https://huangheQQ.github.io/</loc>
-    <lastmod>2021-05-14T10:07:09+08:00</lastmod>
-  </url><url>
-    <loc>https://huangheQQ.github.io/post/</loc>
-=======
-    <loc>https://huangheQQ.github.io/</loc>
+    <loc>https://huangheqq.github.io/</loc>
     <lastmod>2021-05-14T15:47:44+08:00</lastmod>
   </url><url>
-    <loc>https://huangheQQ.github.io/post/</loc>
+    <loc>https://huangheqq.github.io/post/</loc>
     <lastmod>2021-05-14T15:47:44+08:00</lastmod>
   </url><url>
-    <loc>https://huangheQQ.github.io/post/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://huangheqq.github.io/post/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-05-14T15:47:44+08:00</lastmod>
   </url><url>
-    <loc>https://huangheQQ.github.io/post/blog/</loc>
->>>>>>> 676a0f0 (2)
+    <loc>https://huangheqq.github.io/post/blog/</loc>
     <lastmod>2021-05-14T10:07:09+08:00</lastmod>
   </url><url>
-    <loc>https://huangheQQ.github.io/post/myziji/</loc>
+    <loc>https://huangheqq.github.io/post/myziji/</loc>
     <lastmod>2021-05-14T10:07:09+08:00</lastmod>
   </url><url>
-    <loc>https://huangheQQ.github.io/categories/</loc>
+    <loc>https://huangheqq.github.io/categories/</loc>
   </url><url>
-    <loc>https://huangheQQ.github.io/tags/</loc>
+    <loc>https://huangheqq.github.io/tags/</loc>
   </url>
 </urlset>
