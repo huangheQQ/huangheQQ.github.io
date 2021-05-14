@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.83.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Blog - huanghe</title>
+    <meta property="og:title" content="Blog - huanghe">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2021-05-14T10:07:09&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2021-05-14T10:07:09&#43;08:00">
+        
+    <meta name="description" content="Blog">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="https://huangheQQ.github.io/post/blog/">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+
+    </head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://huangheQQ.github.io">
+                        huanghe
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://huangheQQ.github.io">博客</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">Blog</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2021年5月14日
+                            10:07
+                        </date>
+                        <aside id="toc" class="dismissed">
+                            <span class="toc-title">目录 <a href="#" class="toc-dismiss"></a></span>
+                            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#git环境搭建">Git环境搭建</a></li>
+    <li><a href="#git项目搭建">Git项目搭建</a></li>
+    <li><a href="#git是如何工作的">Git是如何工作的</a>
+      <ul>
+        <li><a href="#查看文件状态">查看文件状态</a></li>
+      </ul>
+    </li>
+    <li><a href="#git文件操作">GIt文件操作</a></li>
+    <li><a href="#使用码云">使用码云</a></li>
+    <li><a href="#idea集成git">IDEA集成GIT</a></li>
+    <li><a href="#说明git分支">说明：<strong>GIT</strong>分支</a></li>
+  </ul>
+</nav>
+                        </aside><div class="post-content">
+                            <h1 id="get的使用">Get的使用</h1>
+<blockquote>
+<p>Linux常用命令</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pwd : 查看当前所有目录
+cd~:切换到用户所在目录
+cd/：切换到根本目录
+cd dir_name/:进入dir_name目录
+ls:列出清单
+ls -a:列出全部清单
+clear:清空屏幕
+mkdir:创建目录
+rm -r dir_name：删除空目录
+touch file_name:创建文件
+echo file_content &gt; file_name :给file_name文件写入内容file_content
+history:查看历史操作记录
+--help：查看命令帮助文档
+</code></pre></div><h2 id="git环境搭建">Git环境搭建</h2>
+<blockquote>
+<p><em>设置用户名与邮箱（用户标识，必要的)</em></p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#查看系统config</span>
+git config --system -l
+<span style="color:#75715e">#查看当前用户(global)配置</span>
+git config --global -l
+
+<span style="color:#75715e">#安装后自己需要配置的 不然以后提交项目提交不上去</span>
+git config --global user.name <span style="color:#e6db74">&#34;huanghe&#34;</span> <span style="color:#75715e">#名称</span>
+git config --global user.email <span style="color:#e6db74">&#34;2816131206@qq.com&#34;</span> <span style="color:#75715e">#邮箱</span>
+
+</code></pre></div><p><img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210411220019063.png" alt="image-20210411220019063"></p>
+<h2 id="git项目搭建">Git项目搭建</h2>
+<p>创建本地创库的方法有两种：一种是搭建全新的仓库，另一种是克隆远程仓库</p>
+<p>​	1，创建全新的仓库，需要用GIT管理的项目的根路径执行</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#在当前目录新建一个Git代码库</span>
+$ git init
+</code></pre></div><p>2, 执行后可用看到仅仅在项目目录多出了一个.git目录，关于版本等的所以信息都在这个目录里面</p>
+<blockquote>
+<p>克隆远程仓库</p>
+</blockquote>
+<p>1.另一种方式是克隆远程目录，由于是将远程服务器上的仓库完全镜像一份值本地</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 克隆一个项目和他的整个代码历史(版本信息)</span>
+$ git clone <span style="color:#f92672">[</span>urk<span style="color:#f92672">]</span>  https://gitee.com/kuangstudy/openclass.git
+</code></pre></div><blockquote>
+<h2 id="git是如何工作的">Git是如何工作的</h2>
+</blockquote>
+<p><strong>Git的工作目录有哪些?</strong></p>
+<p>**本地工作目录：**本地电脑上属于Git的文件夹。</p>
+<p><strong>暂存区：</strong> 由本地推送的文件会暂存在这里。</p>
+<p><strong>Git本地仓库：</strong> 存放由暂存区推送过来的文件或由远程仓库克隆的文件。</p>
+<p><strong>Git远程仓库：</strong> GitHub、码云等等，负责远程托管项目，需要从本地仓库将项目提交至远程仓库。</p>
+<p><strong>向上推送流程：</strong> 在本地工作目录中右键打开<code>git bash here</code>，通过命令<code>git add .</code>将工作目录中需要推送的项目的所有的文件提交至暂存区，然后，通过命令<code>git commit -m &quot;注释&quot;</code>将文件提交至Git本地仓库，命令<code>git push origin master</code>将项目推送至Git远程仓库的主分支。</p>
+<p><strong>向下获取的流程：通过命令<code>git pull</code> 得到远程仓库，通过<code>git reset</code>将远程仓库提取至暂存区 ，再通过<code>git checkout</code>将仓库检出至工作目录。也可以克隆远程仓库</strong> (推荐这种方式)。</p>
+<blockquote>
+<h3 id="查看文件状态">查看文件状态</h3>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 查看指定文件状态</span>
+git status <span style="color:#f92672">[</span>filename<span style="color:#f92672">]</span>
+<span style="color:#75715e"># 查看所有文件状态</span>
+git status
+
+git add .  <span style="color:#75715e">#添加所有文件到暂存区</span>
+git commit -m <span style="color:#e6db74">&#34;消息内容&#34;</span> <span style="color:#75715e">#提交暂存区中的所有内容到本地仓库 -m 提交信息  （git commit -m &#34;new file a.txt&#34;）</span>
+</code></pre></div><p>文件操作</p>
+<h2 id="git文件操作">GIt文件操作</h2>
+<p>比如前端项目的 npm_moudles</p>
+<p>在主目录下建立“.gitignore” 文件，此文件有如下规则：</p>
+<p>1.忽略文件中的空行或以井号( # )开始的行将会被忽略。
+2.可以使用Linux通配符。例如:星号(* )代表任意多个字符,问号( ? )代表- -个字符,方括号( [abc] )代表可选字符范围,
+大括号( {string1,string&hellip;} )代表可选的字符串等。
+3.如果名称的最前面有一个感叹寻(!) , 表示例外规则,将不被忽略。
+4.如果名称的最前面是一个路径分隔符 (/ ) , 表示要忽略的文件在此目录下,而子目录中的文件不忽略。
+5.如果名称的最后面是一个路径分隔符(1 ) , 表示要忽略的是此目录下该名称的子目录,而非文件(默认文件或目录都忽略)。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#为注释</span>
+*.txt      <span style="color:#75715e">#忽略所有. txt结尾的文件，这样的话上传就不会被选中了</span>
+!1ib.txt   <span style="color:#75715e">#但1ib. txt除外</span>
+/temp       <span style="color:#75715e">#仅忽略项目根目录下的TODO文件，不包括其它目录temp</span>
+build/      <span style="color:#75715e">#忽略bui1d/目录下的所有文件</span>
+doc/*.txt  <span style="color:#75715e">#会忽略doc/notes. txt但不包括doc/server/arch. txt</span>
+</code></pre></div><blockquote>
+<p>狂神 的 .gitignore 配置</p>
+</blockquote>
+<pre><code class="language-shel" data-lang="shel">*.class
+*.1og
+*.lock
+
+# Package Files #
+*.jar
+*.war
+*.ear
+target/
+
+# idea
+.idea/
+*.iml
+
+*velocity. log*
+### STS ###
+.apt_generated
+.factorypath
+.springBeans
+
+### IntelliJ IDEA ###
+*.iml
+*.ipr
+*.iws
+.idea
+.classpath
+.project
+.project
+.settings/
+bin/
+
+*.log
+tmp/
+
+#rebel
+*rebel.xml*
+
+</code></pre><h2 id="使用码云">使用码云</h2>
+<blockquote>
+<p>github 是有墙的，比较慢，在国内的话，我们一般使用gitee，公司中的时候会搭建自己的gitlab服务器</p>
+</blockquote>
+<p>1.注册登录码云，完善个人信息</p>
+<p>2.设置本机绑定SSH公钥，实现免密码登录！</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 进入  C:\Users\86173\.ssh</span>
+<span style="color:#75715e"># 生成公钥</span>
+ssh-keygen
+</code></pre></div><p><img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210412001201332.png" alt="image-20210412001201332"></p>
+<p>3.将公钥信息public key 添加到码云账户中即可！</p>
+<p><img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210412000850605.png" alt="image-20210412000850605"></p>
+<p>4.使用码云创建一个自己的仓库</p>
+<p><img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210412001408315.png" alt="image-20210412001408315"></p>
+<p><img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210412001702732.png" alt="image-20210412001702732"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#克隆</span>
+git clone <span style="color:#f92672">[</span>url<span style="color:#f92672">]</span>
+</code></pre></div><p>克隆到自己的仓库</p>
+<h2 id="idea集成git">IDEA集成GIT</h2>
+<p>1，新建项目，绑定git</p>
+<p>​		将我们远程的git文件目录剪切到项目中即可		<img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210412093148100.png" alt="image-20210412093148100"></p>
+<p>​		注意项目中的变化</p>
+<p><img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210412093236158.png" alt="image-20210412093236158"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git add .
+git commit -m <span style="color:#e6db74">&#34;说明&#34;</span>
+git push
+
+<span style="color:#75715e"># 提交到gitee上面去  如何要输入账户密码： huangshaohe  hsh52099</span>
+git push  
+</code></pre></div><h2 id="说明git分支">说明：<strong>GIT</strong>分支</h2>
+<p><img src="C:%5CUsers%5C86173%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210412102242990.png" alt="image-20210412102242990"></p>
+<p>git分支中常用命令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 列出所有本地分支</span>
+git branch
+
+<span style="color:#75715e"># 列出所有远程分支</span>
+git branch -r
+
+<span style="color:#75715e"># 新建一个分支，但依然停留在当前分支</span>
+git branch <span style="color:#f92672">[</span>branch-name<span style="color:#f92672">]</span>
+
+<span style="color:#75715e"># 新建一个分支，并切换到该分支</span>
+git checkout -b <span style="color:#f92672">[</span>branch<span style="color:#f92672">]</span>
+
+<span style="color:#75715e"># 合并指定分支到当前分支</span>
+git merge <span style="color:#f92672">[</span>branch<span style="color:#f92672">]</span>
+
+<span style="color:#75715e"># 删除分支</span>
+git branch -d <span style="color:#f92672">[</span>branch-name<span style="color:#f92672">]</span>
+
+<span style="color:#75715e"># 删除远程分支</span>
+git push origin --delete <span style="color:#f92672">[</span>branch-name<span style="color:#f92672">]</span>
+git branch -dr <span style="color:#f92672">[</span>remote/branch<span style="color:#f92672">]</span>
+</code></pre></div>
+                        </div>
+
+                        <div class="post-meta meta-tags">
+                            
+                            没有标签
+                            
+                        </div>
+                    </article>
+                    
+                    <div id="comments"><span class="widget-title">评论已关闭</span></div>
+
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        
+    
+<form id="search" method="POST" action="https://duckduckgo.com/">
+    
+    <input type="text" name="q" maxlength="255" placeholder="搜索...">
+    
+    <input type="hidden" name="sites" value="https://huangheQQ.github.io">
+    
+    <input type="hidden" name="kp" value="-2">
+    
+    <input type="hidden" name="kh" value="1">
+    
+    <input type="hidden" name="kl" value="wt-wt">
+    
+    <input type="hidden" name="kg" value="p">
+    
+    <input type="hidden" name="kaf" value="1">
+    
+    
+    <input type="hidden" name="k1" value="-1">
+
+    
+
+    
+    
+    <input type="hidden" name="k7" value="#ffffff">
+    
+    <input type="hidden" name="kj" value="#ffffff">
+    
+    <input type="hidden" name="ky" value="#eaeaea">
+    
+    <input type="hidden" name="kx" value="#6E7173">
+    
+    <input type="hidden" name="k8" value="#444">
+    
+    <input type="hidden" name="k9" value="#6E7173">
+    
+    <input type="hidden" name="kaa" value="#6E7173">
+    
+    <input type="hidden" name="kae" value="#6E7173">
+
+    
+    
+    <input type="hidden" name="ko" value="1">
+    
+    <input type="hidden" name="kt" value="n">
+    
+    <input type="hidden" name="ka" value="g">
+    
+    <input type="hidden" name="ks" value="l">
+    
+    <input type="hidden" name="kv" value="1">
+
+    <button type="submit" class="submit icon-search"></button>
+</form>
+
+
+
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+        <ul class="widget-list">
+            
+        </ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+      &copy; 2021 <a rel="nofollow" href="https://huangheQQ.github.io">huanghe</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io">Hugo</a> &amp; <a rel="nofollow noreferer noopener" href="https://github.com/JokerQyou/maupassant-hugo">maupassant theme</a>.
+    </div>
+</footer>
+
+<script type="text/javascript" src="/js/app.js" defer></script>
+
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' defer></script>
+
+
+</body>
+</html>
