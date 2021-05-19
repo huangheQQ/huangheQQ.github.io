@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>huanghe</title>
-    <link>https://huangheqq.github.io/</link>
+    <link>https://huangheQQ.github.io/</link>
     <description>Recent content on huanghe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 15 May 2021 15:47:44 +0800</lastBuildDate><atom:link href="https://huangheqq.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 May 2021 15:47:44 +0800</lastBuildDate><atom:link href="https://huangheQQ.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>集合笔记</title>
-      <link>https://huangheqq.github.io/post/%E9%9B%86%E5%90%88/</link>
+      <link>https://huangheQQ.github.io/post/%E9%9B%86%E5%90%88/</link>
       <pubDate>Sat, 15 May 2021 15:47:44 +0800</pubDate>
       
-      <guid>https://huangheqq.github.io/post/%E9%9B%86%E5%90%88/</guid>
+      <guid>https://huangheQQ.github.io/post/%E9%9B%86%E5%90%88/</guid>
       <description>Collection List
  ArraryList Vector LinkedList  Set
  HashSet TreeSet  ArrayList 和 LinkedList比较 LinkedList说明：可以添加重复元素，线程不安全
@@ -28,10 +28,10 @@ HashSet底层机制说明
     
     <item>
       <title>多线程笔记</title>
-      <link>https://huangheqq.github.io/post/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/</link>
+      <link>https://huangheQQ.github.io/post/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Fri, 14 May 2021 15:47:44 +0800</pubDate>
       
-      <guid>https://huangheqq.github.io/post/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://huangheQQ.github.io/post/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B0/</guid>
       <description>进程 进程就是一个应用程序 就好像QQ微信 一个进程可以有多个线程 就好像QQ 你可以和我聊天，还可以和别人聊天 迅雷多个同时下载 就是多线程
 主线程结束不会造成程序结束，子线程不会结束
 并发和并行 并发就是同一时刻多个任务交替执行，单核的电脑 并行就是同一时刻多个任务同时执行 多核cpu可以实现并行
@@ -49,10 +49,10 @@ T3 t3 = new T3() Thread thread01 = new Thread(t3) Thread thread02 = new Thread(t
     
     <item>
       <title>Blog</title>
-      <link>https://huangheqq.github.io/post/blog/</link>
+      <link>https://huangheQQ.github.io/post/blog/</link>
       <pubDate>Fri, 14 May 2021 10:07:09 +0800</pubDate>
       
-      <guid>https://huangheqq.github.io/post/blog/</guid>
+      <guid>https://huangheQQ.github.io/post/blog/</guid>
       <description>Get的使用  Linux常用命令
  pwd : 查看当前所有目录 cd~:切换到用户所在目录 cd/：切换到根本目录 cd dir_name/:进入dir_name目录 ls:列出清单 ls -a:列出全部清单 clear:清空屏幕 mkdir:创建目录 rm -r dir_name：删除空目录 touch file_name:创建文件 echo file_content &amp;gt; file_name :给file_name文件写入内容file_content history:查看历史操作记录 --help：查看命令帮助文档 Git环境搭建  设置用户名与邮箱（用户标识，必要的)
  #查看系统config git config --system -l #查看当前用户(global)配置 git config --global -l #安装后自己需要配置的 不然以后提交项目提交不上去 git config --global user.name &amp;#34;huanghe&amp;#34; #名称 git config --global user.email &amp;#34;2816131206@qq.com&amp;#34; #邮箱 Git项目搭建 创建本地创库的方法有两种：一种是搭建全新的仓库，另一种是克隆远程仓库
@@ -64,10 +64,10 @@ T3 t3 = new T3() Thread thread01 = new Thread(t3) Thread thread02 = new Thread(t
     
     <item>
       <title>介绍</title>
-      <link>https://huangheqq.github.io/post/myziji/</link>
+      <link>https://huangheQQ.github.io/post/myziji/</link>
       <pubDate>Fri, 14 May 2021 10:07:09 +0800</pubDate>
       
-      <guid>https://huangheqq.github.io/post/myziji/</guid>
+      <guid>https://huangheQQ.github.io/post/myziji/</guid>
       <description>自我介绍 我是黄河
 QQ:2816131206@qq.com
 上传步骤
